@@ -1,9 +1,9 @@
 {
-    "Identifier": "",
-    "Slug": "",
-    "Status": "",
-    "Title": "",
-    "Description": "",
+    "Identifier": "eos3nn9",
+    "Slug": "mpro-covid19",
+    "Status": "In progress",
+    "Title": "Predict bioactivity against Main Protease of SARS-CoV-2",
+    "Description": "MProPred predicts the efficacy of compounds against the main protease of SARS-CoV-2, which is a promising drug target since it processes polyproteins of SARS-CoV-2. This model uses PaDEL-Descriptor to calculate molecular descriptors of compounds. It is based on a dataset of 758 compounds that have inhibition efficacy against the Main Protease, as published in peer-reviewed journals between January, 2020 and August, 2021. Input compounds are compared to compounds in the dataset to measure molecular similarity with MACCS.",
     "Mode": "",
     "Task": [],
     "Input": [],
@@ -12,8 +12,8 @@
     "Output Type": [],
     "Output Shape": "",
     "Interpretation": "",
-    "Tag": [],
-    "Publication": "",
-    "Source Code": "",
-    "License": ""
+    "Tag": "COVID19",
+    "Publication": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10289339/",
+    "Source Code": "https://github.com/Nadimfrds/Mpropred",
+    "License": "MIT"
 }
