@@ -82,6 +82,15 @@ with open(output_file, "w") as exportFile:
 # define load_data for error 07.11.24
 load_data = pd.read_table(output_file, sep='\t', header=None)
 
+# write molecule.smi with tabs instead of spaces for Padel functionality
+output_file = "molecule.smi"
+with open(output_file, "w") as exportFile:
+    for line in smiles_list:
+        new_line = line.replace(' ', '\t')
+        exportFile.write(new_line + '\n')
+
+load_data = pd.read_table(output_file, sep='\t', header=None)
+
 # run model
 desc_calc()
 desc = pd.read_csv('sorted_descriptors_output.csv') # read new sorted output instead of randomly sorted descriptors_output
