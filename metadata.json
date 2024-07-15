@@ -9,7 +9,7 @@
     "Input": ["Compound"],
     "Input Shape": "Single",
     "Output": ["Score"],
-    "Output Type": ["Float", "String"],
+    "Output Type": ["Float"],
     "Output Shape": "List",
     "Interpretation": "Gives the pIC50 values for each compound to compare their bioactivity against the main protease",
     "Tag": "COVID19",
