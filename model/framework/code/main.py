@@ -17,6 +17,21 @@ tmp_folder = os.path.join( root, ".." )
 np.bool = np.bool_
 np.object = np.object_
 
+import pandas as pd
+import subprocess
+import base64
+import pickle
+import numpy as np
+
+# added
+root = os.path.dirname(os.path.abspath(__file__))
+padel_folder = os.path.join( root, "..", "..", "..", "PaDEL-Descriptor" )
+checkpoints_folder = os.path.join(root, "..", "..", "checkpoints")
+tmp_folder = os.path.join( root, ".." )
+
+np.bool = np.bool_
+np.object = np.object_
+
 
 # parse arguments
 input_file = sys.argv[1]
@@ -35,6 +50,32 @@ def desc_calc():
     sorted_descriptors_df = descriptors_df.sort_values( by=descriptors_df.columns[0] )
     sorted_descriptors_df.to_csv( f"{tmp_folder}/sorted_descriptors_output.csv", index=False )
 
+def desc_calc():
+    # Performs the descriptor calculation with PADEL
+    bashCommand = f"java -Xms2G -Xmx2G -Djava.awt.headless=true -jar {padel_folder}/PaDEL-Descriptor.jar -removesalt -standardizenitro -fingerprints -descriptortypes {padel_folder}/MACCSFingerprinter.xml -dir {tmp_folder} -file {tmp_folder}/descriptors_output.csv"
+    process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
+    output, error = process.communicate()
+
+    # Read the output CSV
+    descriptors_df = pd.read_csv( f"{tmp_folder}/descriptors_output.csv" ) #
+    # Sort the output based on the input order
+    sorted_descriptors_df = descriptors_df.sort_values( by=descriptors_df.columns[0] )
+    sorted_descriptors_df.to_csv( f"{tmp_folder}/sorted_descriptors_output.csv", index=False )
+
+# File download option
+def filedownload(df):
+    csv = df.to_csv(index=False)
+    b64 = base64.b64encode(csv.encode()).decode()  # strings <-> bytes conversions
+    href = f'<a href="data:file/csv;base64,{b64}" download="prediction.csv">Download Predictions</a>'
+    return href
+
+# Model building section
+def build_model( input_data ):
+    load_model = pickle.load(open(f'{checkpoints_folder}/Mpro_model.pkl', 'rb'))
+    # Apply model to make predictions
+    prediction = load_model.predict(input_data)
+    df = pd.Series(prediction, name='pIC50')
+    return( df ) 
 # File download option
 def filedownload(df):
     csv = df.to_csv(index=False)
@@ -64,7 +105,20 @@ with open( padel_file, "w" ) as exportFile:
         new_line = line.replace(' ', '\t') # not necessary for single column file
         exportFile.write(new_line + '\n')
 
+# write molecule.smi for PADEL functionality
+padel_file = f"{tmp_folder}/molecule.smi" # debug
+with open( padel_file, "w" ) as exportFile:
+   for line in smiles_list:
+        new_line = line.replace(' ', '\t') # not necessary for single column file
+        exportFile.write(new_line + '\n')
+
 # run model
+desc_calc()
+desc = pd.read_csv(f'{tmp_folder}/sorted_descriptors_output.csv')
+Xlist = list(pd.read_csv(f'{checkpoints_folder}/lists_of_descriptor.csv').columns)
+desc_subset = desc[Xlist]
+outputs = build_model( desc_subset )
+#check input and output have the same length
 desc_calc()
 desc = pd.read_csv(f'{tmp_folder}/sorted_descriptors_output.csv')
 Xlist = list(pd.read_csv(f'{checkpoints_folder}/lists_of_descriptor.csv').columns)
@@ -77,11 +131,15 @@ assert input_len == output_len
 
 # write output in a .csv file
 with open( output_file.strip(), "w") as f:
+with open( output_file.strip(), "w") as f:
     writer = csv.writer(f)
     writer.writerow(["value"])  # header
     for o in outputs:
         writer.writerow([o])
 
+os.remove( f"{tmp_folder}/molecule.smi" )
+os.remove( f"{tmp_folder}/descriptors_output.csv" )
+os.remove( f"{tmp_folder}/sorted_descriptors_output.csv" )
 os.remove( f"{tmp_folder}/molecule.smi" )
 os.remove( f"{tmp_folder}/descriptors_output.csv" )
 os.remove( f"{tmp_folder}/sorted_descriptors_output.csv" )
