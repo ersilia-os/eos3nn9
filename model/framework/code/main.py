@@ -62,13 +62,6 @@ with open( padel_file, "w" ) as exportFile:
         new_line = line.replace(' ', '\t') # not necessary for single column file
         exportFile.write(new_line + '\n')
 
-# write molecule.smi for PADEL functionality
-padel_file = f"{tmp_folder}/molecule.smi" # debug
-with open( padel_file, "w" ) as exportFile:
-   for line in smiles_list:
-        new_line = line.replace(' ', '\t') # not necessary for single column file
-        exportFile.write(new_line + '\n')
-
 # run model
 desc_calc()
 desc = pd.read_csv(f'{tmp_folder}/sorted_descriptors_output.csv')
