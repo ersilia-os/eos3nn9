@@ -33,13 +33,6 @@ def desc_calc():
     sorted_descriptors_df = descriptors_df.sort_values( by=descriptors_df.columns[0] )
     sorted_descriptors_df.to_csv( f"{tmp_folder}/sorted_descriptors_output.csv", index=False )
 
-# File download option
-def filedownload(df):
-    csv = df.to_csv(index=False)
-    b64 = base64.b64encode(csv.encode()).decode()  # strings <-> bytes conversions
-    href = f'<a href="data:file/csv;base64,{b64}" download="prediction.csv">Download Predictions</a>'
-    return href
-
 # Model building section
 def build_model( input_data ):
     load_model = pickle.load(open(f'{checkpoints_folder}/Mpro_model.pkl', 'rb'))
