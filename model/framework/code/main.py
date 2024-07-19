@@ -7,11 +7,13 @@ import subprocess
 import base64
 import pickle
 import numpy as np
+import tempfile
+import shutil
 
 root = os.path.dirname(os.path.abspath(__file__))
-padel_folder = os.path.join( root, "..", "..", "..", "PaDEL-Descriptor" )
+padel_folder = os.path.join(root, "..", "PaDEL-Descriptor")
 checkpoints_folder = os.path.join(root, "..", "..", "checkpoints")
-tmp_folder = os.path.join( root, ".." )
+tmp_folder = tempfile.mkdtemp(prefix="ersilia-")
 
 np.bool = np.bool_
 np.object = np.object_
@@ -73,6 +75,4 @@ with open( output_file.strip(), "w") as f:
     for o in outputs:
         writer.writerow([o])
 
-os.remove( f"{tmp_folder}/molecule.smi" )
-os.remove( f"{tmp_folder}/descriptors_output.csv" )
-os.remove( f"{tmp_folder}/sorted_descriptors_output.csv" )
+shutil.rmtree(tmp_folder)
