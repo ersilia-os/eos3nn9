@@ -15,6 +15,11 @@ padel_folder = os.path.join(root, "..", "PaDEL-Descriptor")
 checkpoints_folder = os.path.join(root, "..", "..", "checkpoints")
 tmp_folder = tempfile.mkdtemp(prefix="ersilia-")
 
+print(f"root: {root}") # debug
+print(f"padel_folder: {padel_folder}") # debug
+print(f"checkpoints_folder: {checkpoints_folder}") # debug
+print(f"tmp_folder: {tmp_folder}") # debug
+
 np.bool = np.bool_
 np.object = np.object_
 
