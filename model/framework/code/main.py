@@ -12,8 +12,7 @@ import shutil
 
 root = os.path.dirname(os.path.abspath(__file__))
 
-#padel_folder = os.path.join(root, "..", "PaDEL-Descriptor")
-padel_folder = os.path.join(root, ".", "PaDEL-Descriptor")
+padel_folder = os.path.join(root, "..", "PaDEL-Descriptor")
 checkpoints_folder = os.path.join(root, "..", "..", "checkpoints")
 tmp_folder = tempfile.mkdtemp(prefix="ersilia-")
 
@@ -28,7 +27,6 @@ output_file = sys.argv[2]
 def desc_calc():
     # Performs the descriptor calculation with PADEL
     bashCommand = f"java -Xms2G -Xmx2G -Djava.awt.headless=true -jar {padel_folder}/PaDEL-Descriptor.jar -removesalt -standardizenitro -fingerprints -descriptortypes {padel_folder}/MACCSFingerprinter.xml -dir {tmp_folder} -file {tmp_folder}/descriptors_output.csv"
-#    bashCommand = f"java -Xms2G -Xmx2G -Djava.awt.headless=true -jar ./PaDEL-Descriptor/PaDEL-Descriptor.jar -removesalt -standardizenitro -fingerprints -descriptortypes {padel_folder}/MACCSFingerprinter.xml -dir {tmp_folder} -file {tmp_folder}/descriptors_output.csv"
     process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
     output, error = process.communicate()
 
