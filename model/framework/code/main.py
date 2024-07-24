@@ -11,7 +11,6 @@ import tempfile
 import shutil
 
 root = os.path.dirname(os.path.abspath(__file__))
-# print(f"call from main code: {root}")
 
 padel_folder = os.path.join(root, "..", "PaDEL-Descriptor")
 checkpoints_folder = os.path.join(root, "..", "..", "checkpoints")
