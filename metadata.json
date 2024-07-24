@@ -12,7 +12,7 @@
     "Output Type": ["Float"],
     "Output Shape": "List",
     "Interpretation": "Gives the pIC50 values for each compound to compare their bioactivity against the main protease",
-    "Tag": "COVID19",
+    "Tag": ["COVID19"],
     "Publication": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10289339/",
     "Source Code": "https://github.com/Nadimfrds/Mpropred",
     "License": "MIT"
