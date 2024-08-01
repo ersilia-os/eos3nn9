@@ -26,6 +26,7 @@ MProPred predicts the efficacy of compounds against the main protease of SARS-Co
 ## Ersilia model URLs
 * [GitHub](https://github.com/ersilia-os/eos3nn9)
 * [AWS S3](https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos3nn9.zip)
+* [DockerHub](https://hub.docker.com/r/ersiliaos/eos3nn9) (AMD64, ARM64)
 
 ## Citation
 
