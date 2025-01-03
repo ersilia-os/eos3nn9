@@ -72,9 +72,9 @@ output_len = len(outputs)
 assert input_len == output_len
 
 # write output in a .csv file
-with open( output_file.strip(), "w") as f:
+with open(output_file.strip(), "w") as f:
     writer = csv.writer(f)
-    writer.writerow(["value"])  # header
+    writer.writerow(["mpro_pic50"])
     for o in outputs:
         writer.writerow([o])
 

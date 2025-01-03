@@ -1,0 +1,2 @@
+name,type,direction,description
+mpro_pic50,float,high,Predicted IC50 value for the inhibition of the Mpro protein of SARS-CoV-2
