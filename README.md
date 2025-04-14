@@ -2,44 +2,78 @@
 
 MProPred predicts the efficacy of compounds against the main protease of SARS-CoV-2, which is a promising drug target since it processes polyproteins of SARS-CoV-2. This model uses PaDEL-Descriptor to calculate molecular descriptors of compounds. It is based on a dataset of 758 compounds that have inhibition efficacy against the Main Protease, as published in peer-reviewed journals between January, 2020 and August, 2021. Input compounds are compared to compounds in the dataset to measure molecular similarity with MACCS.
 
-## Identifiers
+This model was incorporated on 2024-07-01.
 
-* EOS model ID: `eos3nn9`
-* Slug: `mpro-covid19`
+## Information
+### Identifiers
+- **Ersilia Identifier:** `eos3nn9`
+- **Slug:** `mpro-covid19`
 
-## Characteristics
+### Domain
+- **Task:** `Annotation`
+- **Subtask:** `Activity prediction`
+- **Biomedical Area:** `COVID-19`
+- **Target Organism:** `SARS-CoV-2`
+- **Tags:** `COVID19`
 
-* Input: `Compound`
-* Input Shape: `Single`
-* Task: `Regression`
-* Output: `Score`
-* Output Type: `Float`
-* Output Shape: `List`
-* Interpretation: Gives the pIC50 values for each compound to compare their bioactivity against the main protease
+### Input
+- **Input:** `Compound`
+- **Input Dimension:** `1`
 
-## References
+### Output
+- **Output Dimension:** `1`
+- **Output Consistency:** `Fixed`
+- **Interpretation:** Gives the pIC50 values for each compound to compare their bioactivity against the main protease
 
-* [Publication](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10289339/)
-* [Source Code](https://github.com/Nadimfrds/Mpropred)
-* Ersilia contributor: [HarmonySosa](https://github.com/HarmonySosa)
+Below are the **Output Columns** of the model:
+| Name | Type | Direction | Description |
+|------|------|-----------|-------------|
+| mpro_pic50 | float | high | Predicted IC50 value for the inhibition of the Mpro protein of SARS-CoV-2 |
 
-## Ersilia model URLs
-* [GitHub](https://github.com/ersilia-os/eos3nn9)
-* [AWS S3](https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos3nn9.zip)
-* [DockerHub](https://hub.docker.com/r/ersiliaos/eos3nn9) (AMD64, ARM64)
 
-## Citation
+### Source and Deployment
+- **Source:** `Local`
+- **Source Type:** `External`
+- **DockerHub**: [https://hub.docker.com/r/ersiliaos/eos3nn9](https://hub.docker.com/r/ersiliaos/eos3nn9)
+- **Docker Architecture:** `AMD64`, `ARM64`
+- **S3 Storage**: [https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos3nn9.zip](https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos3nn9.zip)
 
-If you use this model, please cite the [original authors](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10289339/) of the model and the [Ersilia Model Hub](https://github.com/ersilia-os/ersilia/blob/master/CITATION.cff).
+### Resource Consumption
 
-## License
 
-This package is licensed under a GPL-3.0 license. The model contained within this package is licensed under a MIT license.
+### References
+- **Source Code**: [https://github.com/Nadimfrds/Mpropred](https://github.com/Nadimfrds/Mpropred)
+- **Publication**: [https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10289339/](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10289339/)
+- **Publication Type:** `Peer reviewed`
+- **Publication Year:** `2023`
+- **Ersilia Contributor:** [HarmonySosa](https://github.com/HarmonySosa)
 
-Notice: Ersilia grants access to these models 'as is' provided by the original authors, please refer to the original code repository and/or publication if you use the model in your research.
+### License
+This package is licensed under a [GPL-3.0](https://github.com/ersilia-os/ersilia/blob/master/LICENSE) license. The model contained within this package is licensed under a [MIT](LICENSE) license.
 
-## About Us
+**Notice**: Ersilia grants access to models _as is_, directly from the original authors, please refer to the original code repository and/or publication if you use the model in your research.
 
-The [Ersilia Open Source Initiative](https://ersilia.io) is a Non Profit Organization ([1192266](https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/5170657/full-print)) with the mission is to equip labs, universities and clinics in LMIC with AI/ML tools for infectious disease research.
 
-[Help us](https://www.ersilia.io/donate) achieve our mission!
+## Use
+To use this model locally, you need to have the [Ersilia CLI](https://github.com/ersilia-os/ersilia) installed.
+The model can be **fetched** using the following command:
+```bash
+# fetch model from the Ersilia Model Hub
+ersilia fetch eos3nn9
+```
+Then, you can **serve**, **run** and **close** the model as follows:
+```bash
+# serve the model
+ersilia serve eos3nn9
+# generate an example file
+ersilia example -n 3 -f my_input.csv
+# run the model
+ersilia run -i my_input.csv -o my_output.csv
+# close the model
+ersilia close
+```
+
+## About Ersilia
+The [Ersilia Open Source Initiative](https://ersilia.io) is a tech non-profit organization fueling sustainable research in the Global South.
+Please [cite](https://github.com/ersilia-os/ersilia/blob/master/CITATION.cff) the Ersilia Model Hub if you've found this model to be useful. Always [let us know](https://github.com/ersilia-os/ersilia/issues) if you experience any issues while trying to run it.
+If you want to contribute to our mission, consider [donating](https://www.ersilia.io/donate) to Ersilia!
