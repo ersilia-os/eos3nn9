@@ -43,10 +43,6 @@ Below are the **Output Columns** of the model:
 - **Environment Size (Mb):** `912`
 - **Image Size (Mb):** `1120.52`
 
-**Computational Performance (seconds):**
-- 4 inputs: `35.57`
-- 20 inputs: `27.73`
-- 100 inputs: `37.44`
 
 ### References
 - **Source Code**: [https://github.com/Nadimfrds/Mpropred](https://github.com/Nadimfrds/Mpropred)
