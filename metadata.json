@@ -37,6 +37,8 @@
     "License": "MIT",
     "Contributor": "HarmonySosa",
     "Incorporation Date": "2024-07-01",
+    "Last Packaging Date": "2025-10-23",
+    "Release": "v1.0.0",
     "S3": "https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos3nn9.zip",
     "DockerHub": "https://hub.docker.com/r/ersiliaos/eos3nn9",
     "Docker Architecture": [
@@ -45,11 +47,11 @@
     ],
     "Model Size": 83.0,
     "Environment Size": 925.0,
-    "Image Size": 1120.65,
-    "Computational Performance 1": 33.87,
-    "Computational Performance 2": 26.45,
-    "Computational Performance 3": 38.25,
-    "Computational Performance 4": 226.81,
-    "Computational Performance 5": 1078.97,
+    "Image Size": 1071.31,
+    "Computational Performance 1": 28.51,
+    "Computational Performance 2": 19.23,
+    "Computational Performance 3": 23.07,
+    "Computational Performance 4": 77.47,
+    "Computational Performance 5": 318.15,
     "Docker Pack Method": "FastAPI"
 }
