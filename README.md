@@ -2,8 +2,7 @@
 
 MProPred predicts the efficacy of compounds against the main protease of SARS-CoV-2, which is a promising drug target since it processes polyproteins of SARS-CoV-2. This model uses PaDEL-Descriptor to calculate molecular descriptors of compounds. It is based on a dataset of 758 compounds that have inhibition efficacy against the Main Protease, as published in peer-reviewed journals between January, 2020 and August, 2021. Input compounds are compared to compounds in the dataset to measure molecular similarity with MACCS.
 
-This model was incorporated on 2024-07-01.
-
+This model was incorporated on 2024-07-01.Last packaged on 2025-10-23.
 
 ## Information
 ### Identifiers
@@ -42,12 +41,12 @@ Below are the **Output Columns** of the model:
 ### Resource Consumption
 - **Model Size (Mb):** `83`
 - **Environment Size (Mb):** `925`
-- **Image Size (Mb):** `1120.65`
+- **Image Size (Mb):** `1071.31`
 
 **Computational Performance (seconds):**
-- 10 inputs: `33.87`
-- 100 inputs: `38.25`
-- 10000 inputs: `1078.97`
+- 10 inputs: `28.51`
+- 100 inputs: `23.07`
+- 10000 inputs: `318.15`
 
 ### References
 - **Source Code**: [https://github.com/Nadimfrds/Mpropred](https://github.com/Nadimfrds/Mpropred)
