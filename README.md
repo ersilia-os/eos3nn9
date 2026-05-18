@@ -50,7 +50,7 @@ Below are the **Output Columns** of the model:
 
 ### References
 - **Source Code**: [https://github.com/Nadimfrds/Mpropred](https://github.com/Nadimfrds/Mpropred)
-- **Publication**: [https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10289339/](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10289339/)
+- **Publication**: [https://doi.org/10.1371/journal.pone.0287179](https://doi.org/10.1371/journal.pone.0287179)
 - **Publication Type:** `Peer reviewed`
 - **Publication Year:** `2023`
 - **Ersilia Contributor:** [HarmonySosa](https://github.com/HarmonySosa)
