@@ -22,7 +22,7 @@
     "Output Consistency": "Fixed",
     "Interpretation": "Gives the pIC50 values for each compound to compare their bioactivity against the main protease",
     "Tag": [
-        "COVID19"
+        "Antiviral activity"
     ],
     "Biomedical Area": [
         "COVID-19"
